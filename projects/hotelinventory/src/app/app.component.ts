@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
+import { RoomsComponent } from './rooms/rooms.component';
 
 @Component({
   selector: 'hinv-root',
@@ -8,8 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   // styles: [`h1 {color: red}`]
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'hotelinventory';
 
-  role = 'Admin';
+  @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+
+  ngAfterViewInit(): void {
+    const componentRef = this.vcr.createComponent(RoomsComponent);
+  }
 }
