@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges, DoCheck } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges, DoCheck, OnDestroy } from '@angular/core';
 import { RoomList } from '../rooms';
 
 @Component({
@@ -8,7 +8,7 @@ import { RoomList } from '../rooms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class RoomsListComponent implements OnInit{
+export class RoomsListComponent implements OnInit, OnDestroy{
   @Input() rooms: RoomList[] = [];
   @Input() title: string = '';
 
@@ -32,5 +32,9 @@ export class RoomsListComponent implements OnInit{
 
   selectRoom(room: RoomList){
     this.selectedRoom.emit(room);
+  }
+
+  ngOnDestroy(): void {
+    console.log('destroy is called');
   }
 }

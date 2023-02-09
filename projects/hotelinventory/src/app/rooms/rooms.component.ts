@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, AfterViewChecked, ViewChildren, QueryList } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, AfterViewChecked, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 
@@ -8,7 +8,7 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./rooms.component.scss']
 })
 
-export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked, OnDestroy {
   hotelName = 'Hilton Hotel';
   numberOfRooms = 10;
 
@@ -106,5 +106,8 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
     //this.roomList.push(room);
     this.roomList = [...this.roomList, room];
+  }
+
+  ngOnDestroy(): void {
   }
 }
