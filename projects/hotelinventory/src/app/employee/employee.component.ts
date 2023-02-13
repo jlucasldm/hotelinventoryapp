@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Self } from '@angular/core';
+import { RoomsService } from '../rooms/services/rooms.service';
 
 @Component({
   selector: 'hinv-employee',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeeComponent {
   empName: string = 'John';
 
-  constructor(){};
+  constructor(private roomsService: RoomsService){};
+
   ngOnInit(): void{};
 }
